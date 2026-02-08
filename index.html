@@ -80,7 +80,6 @@
       box-shadow: 0 10px 22px rgba(255, 75, 75, 0.22);
     }
 
-    /* Page finale */
     .final{
       width: min(520px, 100%);
       display: flex;
@@ -117,7 +116,6 @@
   </div>
 
   <script>
-    // Tailles (en px) + réglages pour que ça marche bien sur téléphone
     let yesSize = 20;
     let noSize  = 20;
 
@@ -125,14 +123,15 @@
     const noBtn  = () => document.getElementById("no");
 
     function noClick() {
-      // Oui grossit, Non rétrécit
-      yesSize += 9;      // grossit plus vite
-      noSize  -= 3.5;    // rétrécit doucement
+      yesSize += 9;
+      noSize  -= 3.5;
 
       yesBtn().style.fontSize = yesSize + "px";
-      noBtn().style.fontSize  = Math.max(noSize, 6) + "px";
 
-      // Quand c'est trop petit -> on fait disparaître
+      // Le bouton Non rétrécit entièrement (texte + bouton)
+      noBtn().style.fontSize = Math.max(noSize, 6) + "px";
+      noBtn().style.transform = "scale(" + Math.max(noSize / 20, 0.2) + ")";
+
       if (noSize <= 8) {
         noBtn().style.opacity = "0";
         setTimeout(() => {
@@ -153,3 +152,4 @@
   </script>
 </body>
 </html>
+
